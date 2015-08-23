@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gravatar</title>
+    <script src="md5.js"></script>
+    <script>
+        function getGravatarHash() {
+            return calcMD5("xyz");
+        }
+
+        function getGravatarUrl(email) {
+            return "http://www.gravatar.com/avatar/" + calcMD5(email);
+        }
+
+        function getMyGravatarUrl() {
+            return getGravatarUrl("bjeong@ymail.com");
+        }
+
+        function onBodyLoad() {
+            document.getElementById("desc").innerHTML = "gravatar hash: " + getMyGravatarUrl();
+            document.getElementById("gravatar").setAttribute("src", getMyGravatarUrl());
+        }
+    </script>
+</head>
+<body onload="onBodyLoad()">
+<div>
+    gravatar
+</div>
+
+<h3 id="desc">
+ gravatar id
+</h3>
+
+<img id="gravatar"/>
+
+<div>
+    stock images
+</div>
+<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=wavatar&f=y"/>
+<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=identicon&f=y"/>
+
+</body>
+</html>
