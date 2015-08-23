@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        (function () {
+            // 'angular' is globally defined by angular.js
+            var app = angular.module("mainModule", []);
+
+            var mainCtrl = function ($scope, $http) {
+                $scope.message = "hello3";
+                $scope.error = "no error";
+
+                var onGetOk = function (response) {
+                    $scope.user = response.data;
+                };
+                var onGetError = function (reason) {
+                    $scope.error = "yes error";
+                };
+
+                // todo: url not found error is not caught by the error function!
+                $http.get("https://api.github.com/users/moonrise")
+                        .then(onGetOk, onGetError);
+            }
+
+            app.controller("mainCtrl", mainCtrl);
+        })();
+    </script>
+</head>
+
+<body ng-app="mainModule">
+    <div ng-controller="mainCtrl">
+        <div>
+            simple7 (http): {{message}}
+        </div>
+        <div>
+            error: {{error}}
+        </div>
+        <div>
+            git user: {{user.login}}
+        </div>
+        <div>
+            <img ng-src="{{user.avatar_url}}" title="{{user.login}}"/>
+            <!--<img src="https://avatars.githubusercontent.com/u/3323110?v=3" title="avatar"/>-->
+        </div>
+    </div>
+</body>
+</html>

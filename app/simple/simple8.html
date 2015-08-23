@@ -1,0 +1,49 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        (function () {
+            // 'angular' is globally defined by angular.js
+            var app = angular.module("mainModule", []);
+
+            // notice $s, $h are resolved by the ordinal specified by controller registration!
+            var mainCtrl = function ($s, $h) {
+                $s.message = "hello3";
+                $s.error = "no error";
+
+                var onGetOk = function (response) {
+                    $s.user = response.data;
+                };
+                var onGetError = function (reason) {
+                    $s.error = reason;
+                };
+
+                // todo: url not found error is not caught by the error function!
+                $h.get("https://api.github.com/users/moonrise")
+                        .then(onGetOk, onGetError);
+            }
+
+            // $scope and $http are literal contract (like keyword)
+            app.controller("mainCtrl", ["$scope", "$http", mainCtrl]);
+        })();
+    </script>
+</head>
+
+<body ng-app="mainModule">
+    <div ng-controller="mainCtrl">
+        <div>
+            simple8 (http): {{message}}
+        </div>
+        <div>
+            error: {{error}}
+        </div>
+        <div>
+            git user: {{user.login}}
+        </div>
+        <div>
+            <img ng-src="{{user.avatar_url}}" title="{{user.login}}"/>
+            <!--<img src="https://avatars.githubusercontent.com/u/3323110?v=3" title="avatar"/>-->
+        </div>
+    </div>
+</body>
+</html>
