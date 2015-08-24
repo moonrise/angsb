@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        (function () {
+            // 'angular' is globally defined by angular.js
+            var app = angular.module("mainModule", []);
+
+            var mainCtrl = function ($scope, $http) {
+                $scope.message = "hello3";
+                $scope.error = "no";
+                $scope.username = "angular";
+                $scope.orderby = "name";
+
+                var onGetUserOk = function (response) {
+                    $scope.user = response.data;
+                    getRepos($scope.user.repos_url)
+                };
+
+                var onGetReposOk = function (response) {
+                    $scope.repos = response.data;
+                };
+
+                var onGetError = function (reason) {
+                    $scope.error = "yes";
+                    $scope.user = null;
+                };
+
+                var getRepos = function(reposUrl) {
+                    $http.get(reposUrl)
+                            .then(onGetReposOk, onGetError);
+                }
+
+                $scope.search = function(username) {
+                    // todo: url not found error is not caught by the error function!
+                    $http.get("https://api.github.com/users/" + username)
+                            .then(onGetUserOk, onGetError);
+                }
+            }
+
+            app.controller("mainCtrl", mainCtrl);
+        })();
+    </script>
+</head>
+
+<body ng-app="mainModule">
+    <div ng-controller="mainCtrl">
+        <div>
+            simple-e (show/hide): {{message}}
+        </div>
+        <div ng-show="true">
+            error: {{error}}
+        </div>
+
+        {{username}}
+        <form name="searchUser" ng-submit="search(username)">
+            <input type="search" required placeholder="user to search" ng-model="username">
+            <input type="submit" value="search">
+        </form>
+
+        <div ng-hide="!user">
+            <h2>
+                git user: {{user.login}}
+            </h2>
+
+            Sort by:
+            <select ng-model="orderby">
+                <option value="name">name</option>
+                <option value="-stargazers_count">stars</option>
+                <option value="language">language</option>
+            </select>
+        </div>
+
+        <table ng-show="user">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>stars</th>
+                    <th>language</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="repo in repos | orderBy:orderby">
+                    <td>{{repo.name}}</td>
+                    <td>{{repo.stargazers_count | number}}</td>
+                    <td>{{repo.language}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div ng-show="user">
+            <img ng-src="{{user.avatar_url}}" title="{{user.login}}"/>
+        </div>
+    </div>
+</body>
+</html>

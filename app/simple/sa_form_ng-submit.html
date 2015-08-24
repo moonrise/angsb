@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        (function () {
+            // 'angular' is globally defined by angular.js
+            var app = angular.module("mainModule", []);
+
+            var mainCtrl = function ($scope, $http) {
+                $scope.message = "hello3";
+                $scope.error = "no";
+                $scope.username = "angular";
+
+                var onGetOk = function (response) {
+                    $scope.user = response.data;
+                };
+                var onGetError = function (reason) {
+                    $scope.error = "yes";
+                };
+
+                $scope.search = function(username) {
+                    // todo: url not found error is not caught by the error function!
+                    $http.get("https://api.github.com/users/" + username)
+                            .then(onGetOk, onGetError);
+                }
+            }
+
+            app.controller("mainCtrl", mainCtrl);
+        })();
+    </script>
+</head>
+
+<body ng-app="mainModule">
+    <div ng-controller="mainCtrl">
+        <div>
+            simple-a (form with ng-submit): {{message}}
+        </div>
+        <div>
+            error: {{error}}
+        </div>
+
+        {{username}}
+        <form name="searchUser" ng-submit="search(username)">
+            <input type="search" required placeholder="user to search" ng-model="username">
+            <input type="submit" value="search">
+        </form>
+
+        <h2>
+            git user: {{user.login}}
+        </h2>
+
+        <div>
+            <img ng-src="{{user.avatar_url}}" title="{{user.login}}"/>
+        </div>
+    </div>
+</body>
+</html>
