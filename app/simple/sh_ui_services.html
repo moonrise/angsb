@@ -1,0 +1,96 @@
+<html>
+<head>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        (function () {
+            // 'angular' is globally defined by angular.js
+            var app = angular.module("mainModule", []);
+
+            var mainCtrl = function ($scope, $log, $http, $interval, $location, $anchorScroll) {
+                $scope.message = "hello";
+                $scope.error = "no";
+                $scope.username = "angular";
+                $scope.orderby = "name";
+                $scope.countdown = 5;
+
+                var intervalTask = null;
+
+                var onGetUserOk = function (response) {
+                    $scope.user = response.data;
+                    getRepos($scope.user.repos_url)
+                };
+
+                var onGetReposOk = function (response) {
+                    $scope.repos = response.data;
+
+                    // todo: not sure why we need both $location and $anchorScroll
+                    // todo: seems to work often without $anchorScroll() call
+                    $log.debug("ng-log: anchor scrolling...");
+                    $location.hash("userDetails");
+                    $anchorScroll();
+                };
+
+                var onGetError = function (reason) {
+                    $scope.error = "yes";
+                    $scope.user = null;
+                };
+
+                var getRepos = function (reposUrl) {
+                    $http.get(reposUrl).then(onGetReposOk, onGetError);
+                }
+
+                var onEachTick = function () {
+                    $scope.countdown -= 1;
+                    $log.debug("ng-log: counting down: " + $scope.countdown);
+
+                    if ($scope.countdown < 1 && intervalTask) {
+                        $log.debug("ng-log: searching user: " + $scope.username);
+                        $scope.search($scope.username);
+                    }
+                }
+
+                $scope.search = function (username) {
+                    if (intervalTask) {
+                        $log.debug("ng-log: canceling interval task at countdown " + $scope.countdown);
+                        $interval.cancel(intervalTask);
+                        intervalTask = null;
+                    }
+
+                    // todo: url not found error is not caught by the error function!
+                    $log.debug("ng-log: firing http request for: " + $scope.username);
+                    $http.get("https://api.github.com/users/" + username)
+                            .then(onGetUserOk, onGetError);
+                }
+
+                // auto countdown
+                intervalTask = $interval(onEachTick, 1000, $scope.countdown);
+            }
+
+            app.controller("mainCtrl", mainCtrl);
+        })();
+    </script>
+</head>
+
+<body ng-app="mainModule">
+<div ng-controller="mainCtrl">
+    <div>
+        simple-h (ui services): {{message}}
+    </div>
+    <div ng-show="true">
+        error: {{error}}
+    </div>
+
+    <div ng-show="intervalTask">
+        count down: {{countdown}}
+    </div>
+
+    {{username}}
+    <form name="searchUser" ng-submit="search(username)">
+        <input type="search" required placeholder="user to search" ng-model="username">
+        <input type="submit" value="search">
+    </form>
+
+    <div id="userDetails" ng-include="'sf_included.html'" ng-show="user"/>
+</div>
+</body>
+</html>
