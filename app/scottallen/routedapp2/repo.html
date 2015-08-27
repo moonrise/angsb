@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <a href="#/main">Home</a>
+        <a href="#/main">User</a>
+    </div>
+
+    <h3>
+        git user: {{username}}, git id: {{data.owner.id}}
+    </h3>
+
+    <h2>
+        git repository: {{reponame}},
+    </h2>
+
+    <h2>tags</h2>
+</div>
+
+<div>
+    <ul>
+    <li ng-repeat="tag in data.tags">{{tag.name}}</li>
+    </ul>
+</div>
