@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <a href="#/main">Go Home</a>
+    </div>
+
+    <h2>
+        git user: {{username}}
+    </h2>
+
+    Sort by:
+    <select ng-model="orderby">
+        <option value="name">name</option>
+        <option value="-stargazers_count">stars</option>
+        <option value="language">language</option>
+    </select>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>stars</th>
+        <th>language</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="repo in repos | orderBy:orderby">
+        <td>{{repo.name}}</td>
+        <td>{{repo.stargazers_count | number}}</td>
+        <td>{{repo.language}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <img ng-src="{{user.avatar_url}}" title="{{user.login}}"/>
+</div>
