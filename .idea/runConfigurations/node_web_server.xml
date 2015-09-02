@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="node web server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="node/web-server.js" working-dir="$PROJECT_DIR$/joe-eames-fundamentals">
+    <method />
+  </configuration>
+</component>
