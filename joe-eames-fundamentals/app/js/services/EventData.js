@@ -14,6 +14,11 @@ eventsApp.factory("eventData", function ($http, $log) {
                 });
         },
 
+        getEvent2: function () {
+            return $http({method:"GET", url:"/data/event/2"})
+            //return $http({method:"GET", url:"http://localhost:8000/data/event/1"});
+        },
+
         /* in memory data */
         event: {
             name: 'Boot Camp',
