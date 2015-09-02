@@ -1,7 +1,20 @@
 'use strict';
 
-eventsApp.factory("eventData", function () {
+eventsApp.factory("eventData", function ($http, $log) {
     return {
+        getEvent: function (successcb) {
+            //$http({method:"GET", url:"/data/event/1"})
+            $http({method:"GET", url:"http://localhost:8000/data/event/1"})
+                .success(function(data, status, headers, config) {
+                    successcb(data);
+
+                })
+                .error(function(data, status, headers, config) {
+                    $log.warn(data, status, headers, config);
+                });
+        },
+
+        /* in memory data */
         event: {
             name: 'Boot Camp',
             date: '1/1/2013',

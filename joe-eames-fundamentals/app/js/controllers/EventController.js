@@ -1,8 +1,13 @@
 'use strict';
 
 eventsApp.controller("EventCtrl", function($scope, eventData) {
-    $scope.event = eventData.event;
+    // in memory version
+    //$scope.event = eventData.event;
 
+    // over the wire version
+    eventData.getEvent(function(event) {
+        $scope.event = event;
+    });
 
     $scope.upVote = function(session) {
         session.upVoteCount++;
