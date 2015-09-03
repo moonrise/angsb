@@ -8,6 +8,6 @@ module.exports.get = function(req, res) {
 
 module.exports.save = function(req, res) {
     var event = req.body
-    fs.writeFileSync("../node/data/event/" + req.param.id + ".json", JSON.stringify(event))
+    fs.writeFileSync("./node/data/event/" + req.params.id + ".json", JSON.stringify(event))
     res.send(event)
 }

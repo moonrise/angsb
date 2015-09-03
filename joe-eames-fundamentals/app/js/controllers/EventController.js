@@ -66,6 +66,10 @@ eventsApp.controller("EventCtrl", function($scope, $log, eventData) {
     // get event data
     foo5();
 
+    $scope.doTest = function() {
+        eventData.save($scope.event);
+    }
+
     $scope.upVote = function(session) {
         session.upVoteCount++;
     };

@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.controller("EditEventCtrl", function($scope) {
+eventsApp.controller("EditEventCtrl", function($scope, $log, eventData) {
     $scope.saveEvent = function(event, editEventForm) {
         if (!$scope.hasOwnProperty("event") || !$scope.event.hasOwnProperty("name")) {
             window.alert("event name is not defined");
@@ -8,7 +8,9 @@ eventsApp.controller("EditEventCtrl", function($scope) {
         }
 
         if (editEventForm.$valid) {
-            window.alert("event saved: " + event.name);
+            eventData.save(event).$promise
+                .then(function(response) { $log.debug("event " + event.name + " saved:", response)})
+                .catch(function(response) { $log.debug("event " + event.name + " not saved: ", response)});
         }
     };
     

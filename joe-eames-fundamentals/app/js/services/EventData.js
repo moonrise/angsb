@@ -1,6 +1,8 @@
 'use strict';
 
 eventsApp.factory("eventData", function ($http, $resource, $log) {
+    var resource = $resource("/data/event/:id", {id:"@id"});
+
     return {
         // option1: use call back
         getEvent: function (successcb) {
@@ -23,7 +25,13 @@ eventsApp.factory("eventData", function ($http, $resource, $log) {
 
         // option3: RestAPI
         getEvent3: function () {
-            return $resource("/data/event/:id", {id:"@id"}).get({id:2});
+            return resource.get({id:2});
+        },
+
+        save: function (event) {
+            event.id = 9;
+            $log.debug("event to save: ", event);
+            return resource.save(event);
         },
 
         /* in memory data */
