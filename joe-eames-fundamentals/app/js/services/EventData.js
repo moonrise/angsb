@@ -1,7 +1,8 @@
 'use strict';
 
-eventsApp.factory("eventData", function ($http, $log) {
+eventsApp.factory("eventData", function ($http, $resource, $log) {
     return {
+        // option1: use call back
         getEvent: function (successcb) {
             //$http({method:"GET", url:"/data/event/1"})
             $http({method:"GET", url:"http://localhost:8000/data/event/1"})
@@ -14,9 +15,15 @@ eventsApp.factory("eventData", function ($http, $log) {
                 });
         },
 
+        // option2: return promise
         getEvent2: function () {
             return $http({method:"GET", url:"/data/event/2"})
             //return $http({method:"GET", url:"http://localhost:8000/data/event/1"});
+        },
+
+        // option3: RestAPI
+        getEvent3: function () {
+            return $resource("/data/event/:id", {id:"@id"}).get({id:2});
         },
 
         /* in memory data */
