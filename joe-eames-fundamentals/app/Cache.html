@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="eventsApp">
+<head>
+    <meta charset="utf-8"/>
+    <title>Cache Sample</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./css/app.css"/>
+</head>
+
+<body>
+<div class="container">
+    <div ng-controller="CacheCtrl" style="padding-left: 20px; padding-right: 20px">
+        <div class="container">
+            <h2>Cache Service</h2>
+            <div>Cache Stats: {{getCacheStats()}}</div>
+            <br/>
+            Key: <input type="text" ng-model="key"/>
+            Value: <input type="text" ng-model="value"/>
+            <br/>
+            <button type="button" class="btn" ng-click="addToCache(key, value)">Add</button>
+
+            <br/>
+            <br/>
+            Read Key: <input type="text" ng-model="readKey"/>
+            <div>value of {{readKey}}: {{getFromCache(readKey)}}</div>
+        </div>
+    </div>
+
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/underscore-1.4.4.min.js"></script>
+    <script src="./lib/bootstrap.min.js"></script>
+    <script src="./lib/angular/angular.js"></script>
+    <script src="./lib/angular/angular-sanitize.js"></script>
+    <script src="./lib/angular/angular-resource.js"></script>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/filters.js"></script>
+    <script src="./js/controllers/CacheCtrl.js"></script>
+</body>
+</html>
