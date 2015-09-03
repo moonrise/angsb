@@ -23,8 +23,9 @@
                 var onGetReposOk = function (response) {
                     $scope.repos = response.data;
 
-                    // todo: not sure why we need both $location and $anchorScroll
-                    // todo: seems to work often without $anchorScroll() call
+                    // not sure why we need both $location and $anchorScroll?
+                    // it may seem to work often without $anchorScroll() call and that may be well the case.
+                    // At any rate, yes: $anchorScroll simply scrolls to the current location value, so we need both!
                     $log.debug("ng-log: anchor scrolling...");
                     $location.hash("userDetails");
                     $anchorScroll();
