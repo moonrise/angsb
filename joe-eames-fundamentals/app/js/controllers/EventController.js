@@ -1,6 +1,16 @@
 'use strict';
 
-eventsApp.controller("EventCtrl", function($scope, $log, eventData, $routeParams) {
+eventsApp.controller("EventCtrl", function($scope, $log, eventData, $routeParams, $route) {
+    $log.info("route.current.foo: ", $route.current.foo);                   // specified in route config
+    $log.info("route.current.params.foo: ", $route.current.params.foo);     // URL query param
+    $log.info("route.current.params.routeId: ", $route.current.params.eventId);         // route param
+    $log.info("route.current.pathParams.foo: ", $route.current.pathParams.foo);         // URL query param; won't work!
+    $log.info("route.current.pathParams.routeId: ", $route.current.pathParams.eventId); // route param
+
+    $scope.reload = function() {
+        $route.reload();
+    }
+
     // in memory version
     var foo0 = function() {
         $scope.event = eventData.event;

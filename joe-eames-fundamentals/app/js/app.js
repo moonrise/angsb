@@ -5,7 +5,10 @@ var eventsApp = angular.module("eventsApp", ["ngRoute", "ngSanitize", "ngResourc
         $routeProvider
             .when('/newEvent', { templateUrl: 'templates/NewEvent.html', controller: 'EditEventCtrl' })
             .when('/events', { templateUrl: 'templates/EventList.html', controller: 'EventListCtrl' })
-            .when('/event/:eventId', { templateUrl: 'templates/EventDetails.html', controller: 'EventCtrl' })
+            .when('/event/:eventId', {
+                foo: "bar",
+                templateUrl: 'templates/EventDetails.html',
+                controller: 'EventCtrl' })
             .otherwise({redirectTo: '/events'});
     })
     .factory("myCache", function($cacheFactory) {       // inline service registration
