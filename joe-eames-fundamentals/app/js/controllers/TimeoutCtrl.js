@@ -6,7 +6,7 @@ eventsApp.controller("TimeoutCtrl", function($scope, $timeout) {
     }, 2000);
 
     var promise = $timeout(function() {
-        //$scope.ngTimeoutMessage = "ng";
+        $scope.ngTimeoutMessage = "ng";
     }, 3000);
 
     $scope.cancel = function() {
