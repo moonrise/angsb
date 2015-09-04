@@ -60,7 +60,9 @@ eventsApp.controller("EventCtrl", function($scope, $log, eventData, $routeParams
 
     // RestAPI version - $promise (catch variation)
     var foo5 = function() {
-        var resource = eventData.getEvent3($routeParams.eventId);
+        //var resource = eventData.getEvent3($routeParams.eventId);
+        var resource = $route.current.locals.event;
+
         $log.info("immediate:");
         $log.info(resource);
 
