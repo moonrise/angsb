@@ -1,6 +1,6 @@
 'use strict';
 
-eventsApp.controller("EventCtrl", function($scope, $log, eventData) {
+eventsApp.controller("EventCtrl", function($scope, $log, eventData, $routeParams) {
     // in memory version
     var foo0 = function() {
         $scope.event = eventData.event;
@@ -50,7 +50,7 @@ eventsApp.controller("EventCtrl", function($scope, $log, eventData) {
 
     // RestAPI version - $promise (catch variation)
     var foo5 = function() {
-        var resource = eventData.getEvent3();
+        var resource = eventData.getEvent3($routeParams.eventId);
         $log.info("immediate:");
         $log.info(resource);
 

@@ -4,6 +4,10 @@ eventsApp.factory("eventData", function ($http, $resource, $log) {
     var resource = $resource("/data/event/:id", {id:"@id"});
 
     return {
+        getAllEvents: function() {
+            return resource.query();
+        },
+
         // option1: use call back
         getEvent: function (successcb) {
             //$http({method:"GET", url:"/data/event/1"})
@@ -24,8 +28,8 @@ eventsApp.factory("eventData", function ($http, $resource, $log) {
         },
 
         // option3: RestAPI
-        getEvent3: function () {
-            return resource.get({id:2});
+        getEvent3: function (eventId) {
+            return resource.get({id:eventId});
         },
 
         save: function (event) {

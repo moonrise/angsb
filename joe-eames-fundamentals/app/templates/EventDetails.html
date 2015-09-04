@@ -1,0 +1,58 @@
+<div style="padding-left: 20px; padding-right: 20px">
+    <img ng-src="{{event.imageUrl}}" alt="{{event.name}}"/>
+
+    <div class="row">
+        <div class="span11">
+            <h3 ng-style="mystyle" ng-bind="event.name"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span3">
+            <div><strong>Date:</strong> {{event.date}}</div>
+            <div><strong>Time:</strong> {{event.time}}</div>
+        </div>
+        <div class="span4">
+            <address>
+                <strong>Address:</strong><br/>
+                {{event.location.address}}<br/>
+                {{event.location.city}}, {{event.location.province}}
+            </address>
+            <div/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span11" style="padding-left: 20px; padding-right: 20px;">
+            <hr/>
+            <h3>Sessions</h3>
+        </div>
+    </div>
+
+    <div style="padding-bottom: 20px">
+        <button type="button" class="btn btn-primary" ng-click="doTest()">save as id9</button>
+    </div>
+
+    <ul class="thumbnails">
+        <li ng-repeat="session in event.sessions">
+            <div class="row session">
+                <div class="span0 well votingWidget">
+                    <div class="votingButton" ng-click="upVote(session)">
+                        <i class="icon-chevron-up icon-white"></i>
+                    </div>
+                    <div class="badge badge-inverse">
+                        <div>{{session.upVoteCount}}</div>
+                    </div>
+                    <div class="votingButton" ng-click="downVote(session)">
+                        <i class="icon-chevron-down icon-white"></i>
+                    </div>
+                </div>
+                <div class="well span9">
+                    <h4 class="well-title">{{session.name}}</h4>
+
+                    <p>{{session.duration | duration}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
