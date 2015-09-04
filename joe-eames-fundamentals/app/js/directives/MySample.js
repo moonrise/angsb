@@ -7,6 +7,8 @@ eventsApp.directive("mySample", function ($compile) {
         //    var markup = "<input type='text' ng-model='mySampleData'/> {{mySampleData}}<br/>";
         //    angular.element(element).html($compile(markup)(scope));
         //}
-        template: "<input type='text' ng-model='mySampleData'/> {{mySampleData}}<br/>"
+        template: "<input type='text' ng-model='mySampleData'/> {{mySampleData}}<br/>",
+        scope : {
+        }
     };
 });
