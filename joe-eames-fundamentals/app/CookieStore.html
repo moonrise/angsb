@@ -12,6 +12,19 @@
     <div ng-controller="CookieStoreCtrl" style="padding-left: 20px; padding-right: 20px">
         <div class="container">
             <h4>Cookies</h4>
+            <button type="button" class="btn" ng-click="saveCookie(event)">Save Cookie</button>
+            <button type="button" class="btn" ng-click="loadCookie()">Load Cookie</button>
+            <button type="button" class="btn" ng-click="removeCookie()">Remove Cookie</button>
+
+            <br/>
+            <br/>
+            event:
+            <p>{{event | json}}</p>
+
+            <br/>
+            <br/>
+            event in cookie:
+            <p>{{cEvent}}</p>
         </div>
     </div>
 
