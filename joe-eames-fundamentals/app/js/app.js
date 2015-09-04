@@ -3,9 +3,10 @@
 var eventsApp = angular.module("eventsApp", ["ngRoute", "ngSanitize", "ngResource", "ngCookies"])
     .config(function($routeProvider, $locationProvider) {
         $routeProvider
+            .when('/dyno', { template: 'hello dyno' })
             .when('/newEvent', { templateUrl: 'templates/NewEvent.html', controller: 'EditEventCtrl' })
             .when('/events', { templateUrl: 'templates/EventList.html', controller: 'EventListCtrl' })
-            .when('/dyno', { template: 'hello dyno' })
+            .when('/sampleDirective', { templateUrl: 'templates/SampleDirective.html', controller: 'SampleDirectiveCtrl' })
             .when('/event/:eventId', {
                 foo: "bar",
                 resolve: {
