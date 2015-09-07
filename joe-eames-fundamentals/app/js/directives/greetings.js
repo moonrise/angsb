@@ -20,8 +20,10 @@ eventsApp.directive("greetings", function () {
         restrict: 'E',
         replace: true,
         priority: -1,
-        template: "<button class='btn' ng-click='sayHello()'>Say Hello</button>",
+        //template: "<button class='btn' ng-click='sayHello()'>Say Hello</button>",
+        template: "<div><button class='btn' ng-click='sayHello()'>Say Hello</button><div ng-transclude></div></div>",
         scope: {},
+        transclude: true,
         controller: function($scope) {
             var stuff = [];
 
@@ -47,9 +49,9 @@ eventsApp.directive("greetings", function () {
 }).directive("add1", function() {
     return {
         restrict: 'A',
-        require: 'greetings',
+        require: '^greetings',
         priority: -1,
-        terminal: true,
+        //terminal: true,
         link: function(scope, element, attrs, controller) {
             controller.add("1");
         }
@@ -57,7 +59,7 @@ eventsApp.directive("greetings", function () {
 }).directive("add2", function() {
     return {
         restrict: 'A',
-        require: 'greetings',
+        require: '^greetings',
         priority: -2,
         link: function(scope, element, attrs, controller) {
             controller.add("2");
