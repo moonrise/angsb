@@ -19,6 +19,7 @@ eventsApp.directive("greetings", function () {
     return {
         restrict: 'E',
         replace: true,
+        priority: -1,
         template: "<button class='btn' ng-click='sayHello()'>Say Hello</button>",
         scope: {},
         controller: function($scope) {
@@ -47,7 +48,8 @@ eventsApp.directive("greetings", function () {
     return {
         restrict: 'A',
         require: 'greetings',
-        priority: 1,
+        priority: -1,
+        terminal: true,
         link: function(scope, element, attrs, controller) {
             controller.add("1");
         }
@@ -56,7 +58,7 @@ eventsApp.directive("greetings", function () {
     return {
         restrict: 'A',
         require: 'greetings',
-        priority: 2,
+        priority: -2,
         link: function(scope, element, attrs, controller) {
             controller.add("2");
         }
