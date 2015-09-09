@@ -15,6 +15,17 @@ eventsApp.directive('repeatX', function($compile) {
             for (var i=0; i<Number(attrs.repeatX) - 1; i++) {
                 element.after(element.clone().attr('repeat-x', 0));
             }
+
+            return function(scope, element, attrs, controller) {
+                attrs.$observe('text', function(newValue) {
+                    if (newValue.length > 3) {
+                        element.css('color', 'yellow');
+                    }
+                    else {
+                        element.css('color', 'white');
+                    }
+                });
+            }
         }
     }
 });
