@@ -1,4 +1,5 @@
 /// <reference path="module2.ts" />
+/// <reference path="../../typings/toastr/toastr.d.ts" />
 var App;
 (function (App) {
     var Shapes;
@@ -17,19 +18,10 @@ var App;
         Shapes.rect = new Rectangle(10, 4);
     })(Shapes = App.Shapes || (App.Shapes = {}));
 })(App || (App = {}));
-// todo: uncomment for Node; can't include module2.ts at runtime for now (must be a way...)
-// todo: comment it for html load (module2.js can be loaded in the script tag)
-/*
-module App.Shapes {
-    export class Circle {
-        constructor(public radius: number) {
-        }
-    }
-}
-*/
 var myProgram;
 (function (myProgram) {
     function run() {
+        toastr.info("hello1");
         var myRectangle = App.Shapes.rect;
         console.info(myRectangle.height, myRectangle.getArea());
         var yourRectangle = new App.Shapes.Rectangle(9, 6);

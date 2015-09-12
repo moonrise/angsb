@@ -1,4 +1,8 @@
+/// <reference path="../../typings/toastr/toastr.d.ts" />
+
 import mod2 = require("amdmod2");
+
+declare var toastr: Toastr;
 
 interface IRectangle {
     height: number,
@@ -18,6 +22,8 @@ class Rectangle implements IRectangle {
 var rect:IRectangle = new Rectangle(10, 4);
 
 export function run() {
+    toastr.info("AMD loaded and running...");
+
     var myRectangle:Rectangle = rect;
     console.info(myRectangle.height, myRectangle.getArea());
 

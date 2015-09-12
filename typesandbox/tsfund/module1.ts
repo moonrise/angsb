@@ -1,4 +1,5 @@
 /// <reference path="module2.ts" />
+/// <reference path="../../typings/toastr/toastr.d.ts" />
 
 interface IRectangle {
     height: number,
@@ -30,8 +31,12 @@ module App.Shapes {
 }
 */
 
+declare var toastr: Toastr;
+
 module myProgram {
     function run() {
+        toastr.info("hello1");
+
         var myRectangle: App.Shapes.Rectangle = App.Shapes.rect;
         console.info(myRectangle.height, myRectangle.getArea());
 
