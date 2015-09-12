@@ -3,7 +3,7 @@
   <component name="TypeScriptCompiler">
     <option name="isCompilerEnabled" value="true" />
     <option name="typeScriptServiceDirectory" value="/usr/local/lib/node_modules/typescript/bin" />
-    <option name="typeScriptCompilerParams" value="--target ES5" />
+    <option name="typeScriptCompilerParams" value="--target ES5 --module AMD" />
     <option name="scopeName" value="tscriptsandbox" />
     <option name="hasOutDirectory" value="true" />
     <option name="versionType" value="SERVICE_DIRECTORY" />
