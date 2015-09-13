@@ -7,3 +7,6 @@ tmp
 .idea/workspace.xml
 #typesandbox/*.js
 #typesandbox/*.js.map
+
+deb-tsng/app/**/*.js
+deb-tsng/app/**/*.js.map

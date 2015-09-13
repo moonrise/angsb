@@ -1,0 +1,12 @@
+// this does not work in IntelliJ 14 yet (version 15 may support it)
+// remove this comment when supported and verify as comments are not supported in JSON
+{
+  "compilerOptions": {
+    "module": "amd",
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "files": [
+    "deb-tsng/typings/tsd.d.ts"
+  ]
+}
