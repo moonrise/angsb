@@ -1,3 +1,6 @@
 /// <reference path="../typings/angularjs/angular.d.ts" />
 
-angular.module("productManagement", []);
+module app {
+    angular.module("productManagement", []);
+    export var defaultTitle:string = "App Context List";
+}
