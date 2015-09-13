@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="tscriptsandbox" pattern="file[angsb]:typesandbox/*||file[angsb]:typesandbox/tsfund/*" />
+  <scope name="tscriptsandbox" pattern="file[angsb]:typesandbox/*||file[angsb]:typesandbox/tsfund/*||file[angsb]:deb-tsng/*" />
 </component>
