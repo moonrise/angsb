@@ -1,20 +1,22 @@
 /// <reference path="../../typings/angularjs/angular.d.ts" />
+/// <reference path="product.ts" />
+
+import product = app.domain;
 
 module app {
     module productList {
-
         interface IProductListModel {
             title: string;
             showImage: boolean;
-            products: any[];
-            toggleImage(): void;
-            //toggleImage: () => void;
+            products: app.domain.IProduct[];
+            //toggleImage(): void;
+            toggleImage: () => void;
         }
 
         class ProductListCtrl implements IProductListModel {
             title:string;
             showImage:boolean;
-            products:any[];
+            products:product.IProduct[];
 
             constructor() {
                 this.title = "Product List";
@@ -23,7 +25,7 @@ module app {
                 this.products = [
                     {
                         "productId": 1,
-                        "productName": "Leaf Rake",
+                        "productName": "Leaf Rake 2",
                         "productCode": "GDN-0011",
                         "releaseDate": new Date(2009, 2, 19),
                         "description": "Leaf rake with 48-inch wooden handle.",
