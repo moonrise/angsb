@@ -7,7 +7,7 @@ module app.domain {
         description: string;
         price: number;
         imageUrl:string;
-        //calculateDiscount(number): number;
+        calculateDiscount(number): number;
     }
 
     export class Product implements IProduct {
