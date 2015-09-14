@@ -15,8 +15,8 @@ module app.domain {
                     public productName:string,
                     public productCode:string,
                     public releaseDate:Date,
-                    public description:string,
                     public price:number,
+                    public description:string,
                     public imageUrl:string) {
         }
 
