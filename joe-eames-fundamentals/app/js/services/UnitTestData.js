@@ -10,6 +10,9 @@ eventsApp.factory('unitTestData', function() {
         },
         getYourStuff: function() {
             return "yourStuff";
+        },
+        echo: function(e) {
+            return e;
         }
     }
 });

@@ -20,7 +20,8 @@ describe('UnitTestSrvc', function () {
         beforeEach(function () {
             mockTestData = sinon.stub({
                 getMyStuff: function () {},
-                getYourStuff: function () {}
+                getYourStuff: function () {},
+                echo: function(e) {}
             });
 
             module(function ($provide) {
@@ -39,6 +40,13 @@ describe('UnitTestSrvc', function () {
             var yourStuff = "You";
             mockTestData.getYourStuff.returns(yourStuff);
             expect(unitTestData.getYourStuff()).toBe(yourStuff);
+        }));
+
+        it('mock echo parameter check', inject(function (unitTestData) {
+            mockTestData.echo("1");
+            mockTestData.echo("2");
+            expect(mockTestData.echo.args[0][0]).toEqual("1");
+            expect(mockTestData.echo.args[1][0]).toEqual("2");
         }));
     });
 
