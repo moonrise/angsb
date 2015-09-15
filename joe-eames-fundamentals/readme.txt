@@ -1,6 +1,6 @@
 There are two launchers for this project:
 1. joeeames-fundamentals that runs IntelliJ built in web server (port 63342; serves the whole project!)
-2. node web server that runs Node server at port 8000 (serves only this folder)
+2. "node web server" that runs Node server at port 8000 (serves only this folder)
 
 Since the server data is fed from node web server, port 63342 won't work for data retrieval for $http and $resource
 services. Possibly future solution is jsonp.
@@ -13,4 +13,9 @@ configured only for this folder (joe-eames-fundamentals):
  - http://localhost:8000/Cache.html
  - http://localhost:63342/angsb/joe-eames-fundamentals/app/Compile.html
 
- index.html is SPA root html; a number of view templates are routed from there.
+index.html is SPA root html; a number of view templates are routed from there.
+
+Karma Test Runner
+- cd to joe-eames-fundamentals folder (where app and test folders are located)
+- run 'karma start test/karma.conf.js'
+- or install Karma IntelliJ/WebStorm plugin and create karma launcher ("ng fund karma" is shared)
