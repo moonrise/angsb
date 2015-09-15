@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ng fund karma" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="$PROJECT_DIR$/joe-eames-fundamentals/test/karma.conf.js">
+    <envs />
+    <method />
+  </configuration>
+</component>
