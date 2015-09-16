@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ng fund protractor" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="$PROJECT_DIR$/node_modules/protractor/lib/cli.js" application-parameters="test/protractor.conf.js" working-dir="$PROJECT_DIR$/joe-eames-fundamentals">
+    <method />
+  </configuration>
+</component>
