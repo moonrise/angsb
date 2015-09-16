@@ -1,32 +1,32 @@
-module.exports = function(config){
-  config.set({
+module.exports = function (config) {
+    config.set({
 
-    basePath : '../app',
+        basePath: '../app',
 
-    files : [
-      'lib/angular/angular.js',
-      'lib/angular/angular-*.js',
-      '../test/lib/angular-mocks.js',
-      '../test/lib/sinon-1.15.0.js',
-      'js/**/*.js',
-      '../test/unit/**/*.js'
-    ],
+        files: [
+            'lib/angular/angular.js',
+            'lib/angular/angular-*.js',
+            '../test/lib/angular-mocks.js',
+            '../test/lib/sinon-1.15.0.js',
+            'js/**/*.js',
+            '../test/unit/**/*.js'
+        ],
 
-    autoWatch : true,
+        autoWatch: true,
 
-    frameworks: ['jasmine'],
+        frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+        browsers: ['Chrome'],
 
-    plugins : [
-      'karma-chrome-launcher',
-      'karma-jasmine'
-    ],
+        plugins: [
+            'karma-chrome-launcher',
+            'karma-jasmine'
+        ],
 
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
+        junitReporter: {
+            outputFile: 'test_out/unit.xml',
+            suite: 'unit'
+        }
 
-  });
+    });
 };
