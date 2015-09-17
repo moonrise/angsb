@@ -32,5 +32,11 @@ describe('event registration app', function() {
             var list = element.all(by.repeater('session in event.sessions'));
             expect(list.count()).toEqual(3);
         });
+
+        it('upvote should increment by 1', function() {
+            element.all(by.deepCss('div.votingButton')).first().click();
+            var firstVoteCount = element.all(by.binding('count')).first();
+            expect(firstVoteCount.getText()).toEqual('1');
+        });
     });
 });
